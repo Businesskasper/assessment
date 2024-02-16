@@ -12,18 +12,23 @@ export const usePeopleSearch = () => {
 
   const [isLoading, setIsLoading] = React.useState(false);
 
-  const searchPeople = React.useCallback((searchValue: string) => {
-    setIsLoading(true);
-    fetch(`${API_BASE_URL}/people/?search=${searchValue}`)
-      .then((response) => response.json())
-      .then((result: ApiResponse<People>) => {
-        setFoundPeople(result.results);
-        return result.results;
+  const searchPeople = React.useCallback(
+    (searchValue: string, abortSignal: AbortSignal) => {
+      setIsLoading(true);
+      fetch(`${API_BASE_URL}/people/?search=${searchValue}`, {
+        signal: abortSignal,
       })
-      .finally(() => {
-        setIsLoading(false);
-      });
-  }, []);
+        .then((response) => response.json())
+        .then((result: ApiResponse<People>) => {
+          setFoundPeople(result.results);
+          return result.results;
+        })
+        .finally(() => {
+          setIsLoading(false);
+        });
+    },
+    [],
+  );
 
   return { foundPeople, isLoading, searchPeople };
 };
