@@ -1,6 +1,6 @@
 import { matchPath, useLocation, useNavigate } from "react-router-dom";
 
-import './NavBar.scss';
+import "./NavBar.scss";
 
 export type Link = { target: string; title: string };
 

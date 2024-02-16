@@ -6,7 +6,7 @@ export const People = () => {
   const { isLoading, searchPeople, foundPeople } = usePeopleSearch();
 
   const onSearchKeyUp: React.KeyboardEventHandler<HTMLInputElement> = (
-    event
+    event,
   ) => {
     const { value } = event.target as HTMLInputElement;
 
