@@ -1,7 +1,9 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import "./App.scss";
-import { Films, People } from "./pages";
+import { Films, PeopleSearch } from "./pages";
 import { Link, Navbar } from "./components";
+import { Overview } from "./pages/People/Overview";
+
+import "./App.scss";
 
 function App() {
   const links: Array<Link> = [
@@ -11,9 +13,14 @@ function App() {
       element: <Films />,
     },
     {
-      path: "/people",
-      title: "People",
-      element: <People />,
+      path: "/people-search",
+      title: "People Search",
+      element: <PeopleSearch />,
+    },
+    {
+      path: "/people-overview",
+      title: "People Overview",
+      element: <Overview />,
     },
     {
       path: "/",

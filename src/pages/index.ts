@@ -1,2 +1,2 @@
-export * from './People/People';
+export * from './People/Lookup';
 export * from './Films/Films'
