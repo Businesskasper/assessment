@@ -9,10 +9,10 @@ export const Overview = () => {
 
   const maxPages = Math.ceil(count / 10);
 
-  const [currentPage, setCurrentPage] = React.useState(1);
+  const [currentPage, setCurrentPage] = React.useState(0);
   // Initially get first page
   React.useEffect(() => {
-    getPeople(currentPage);
+    nextPage()
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
