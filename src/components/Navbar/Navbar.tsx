@@ -1,4 +1,9 @@
-import { PathRouteProps, matchPath, useLocation, useNavigate } from "react-router-dom";
+import {
+  PathRouteProps,
+  matchPath,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 
 import "./Navbar.scss";
 
@@ -30,7 +35,7 @@ const NavbarLink = ({ path, title }: Link) => {
   const isActive = !!path && !!matchPath(pathname, path);
 
   const openTarget = () => {
-    navigate(path || '');
+    navigate(path || "");
   };
 
   return (

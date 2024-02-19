@@ -28,7 +28,6 @@ export const usePeopleSearch = () => {
   return { foundPeople, isLoading, searchPeople };
 };
 
-
 export const usePeoplePaginated = () => {
   const [people, setPeople] = React.useState<Array<People>>();
 
@@ -42,7 +41,7 @@ export const usePeoplePaginated = () => {
       .then((response) => response.json())
       .then((result: ApiResponse<People>) => {
         setPeople(result.results);
-        setCount(result.count)
+        setCount(result.count);
         return result.results;
       })
       .finally(() => {
@@ -51,5 +50,4 @@ export const usePeoplePaginated = () => {
   }, []);
 
   return { people, isLoading, count, getPeople };
-
-}
+};

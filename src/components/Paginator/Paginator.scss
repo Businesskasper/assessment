@@ -1,16 +1,16 @@
 .paginator {
-    display: flex;
-    gap: 1rem;
+  display: flex;
+  gap: 1rem;
 
-    button {
-        border-style: none;
-        width: 2rem;
-        background: none;
+  button {
+    border-style: none;
+    width: 2rem;
+    background: none;
 
-        &:hover,
-        &:active {
-            outline: 1px solid darkgray;
-            // color: white;
-        }
+    &:hover,
+    &:active {
+      outline: 1px solid darkgray;
+      // color: white;
     }
+  }
 }

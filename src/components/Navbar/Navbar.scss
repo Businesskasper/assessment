@@ -5,14 +5,14 @@
 
   .link {
     cursor: pointer;
-    padding: .5rem 1rem;
+    padding: 0.5rem 1rem;
     width: 8rem;
 
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    
+
     &:hover,
     &:active,
     &.active {

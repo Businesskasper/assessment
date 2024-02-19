@@ -18,11 +18,7 @@ export const Overview = () => {
       {isLoading ? (
         <LoadingSpinner />
       ) : (
-        <ul>
-          {people?.map((p) => (
-            <li key={p.url}>{p.name}</li>
-          ))}
-        </ul>
+        <ul>{people?.map((p) => <li key={p.url}>{p.name}</li>)}</ul>
       )}
     </div>
   );

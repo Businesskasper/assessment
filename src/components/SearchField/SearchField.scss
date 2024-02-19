@@ -1,27 +1,27 @@
 .search-field {
+  display: flex;
+  gap: 1rem;
+  height: 2rem;
+  width: 16rem;
+  position: relative;
+
+  input {
+    padding: 1rem;
+    width: 100%;
+  }
+
+  .loader-container {
+    position: absolute;
+    // height: 75%;
+    right: 0.6rem;
+    top: 0;
     display: flex;
-    gap: 1rem;
-    height: 2rem;
-    width: 16rem;
-    position: relative;
+    justify-content: center;
+    align-items: center;
 
-    input {
-        padding: 1rem;
-        width: 100%;
-    }
-
-    .loader-container {
-        position: absolute;
-        // height: 75%;
-        right: .6rem;
-        top: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        .loader {
-            height: 60%;
-            border-width: .1rem;
-        }
+    .loader {
+      height: 60%;
+      border-width: 0.1rem;
     }
   }
+}
