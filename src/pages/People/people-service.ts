@@ -27,7 +27,7 @@ export const usePeopleSearch = () => {
           setIsLoading(false);
         });
     },
-    []
+    [],
   );
 
   return { foundPeople, isLoading, searchPeople };
