@@ -7,8 +7,12 @@
     cursor: pointer;
     padding: .5rem 1rem;
     width: 8rem;
-    text-align: center;
 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
     &:hover,
     &:active,
     &.active {

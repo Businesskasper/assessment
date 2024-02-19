@@ -15,7 +15,7 @@ export const usePeopleSearch = () => {
   const searchPeople = React.useCallback(
     (searchValue: string, abortSignal: AbortSignal) => {
       setIsLoading(true);
-      fetch(`${API_BASE_URL}/people/?search=${searchValue}`, {
+      return fetch(`${API_BASE_URL}/people/?search=${searchValue}`, {
         signal: abortSignal,
       })
         .then((response) => response.json())
@@ -27,12 +27,11 @@ export const usePeopleSearch = () => {
           setIsLoading(false);
         });
     },
-    [],
+    []
   );
 
   return { foundPeople, isLoading, searchPeople };
 };
-
 
 export const usePeoplePaginated = () => {
   const [people, setPeople] = React.useState<Array<People>>();
@@ -47,7 +46,7 @@ export const usePeoplePaginated = () => {
       .then((response) => response.json())
       .then((result: ApiResponse<People>) => {
         setPeople(result.results);
-        setCount(result.count)
+        setCount(result.count);
         return result.results;
       })
       .finally(() => {
@@ -56,5 +55,4 @@ export const usePeoplePaginated = () => {
   }, []);
 
   return { people, isLoading, count, getPeople };
-
-}
+};

@@ -1,39 +1,29 @@
-import React from "react";
-import { LoadingSpinner } from "../../components";
+import { SearchField } from "../../components";
 import { usePeopleSearch } from "./people-service";
 
 import "./Lookup.scss";
+import React from "react";
 
 export const PeopleSearch = () => {
-  const { isLoading, searchPeople, foundPeople } = usePeopleSearch();
+  const { searchPeople, foundPeople } = usePeopleSearch();
 
   // Contains the last AbortController in order to cancel the previous fetch for suggestions
   const previousAbortController = React.useRef<AbortController>();
 
-  const onSearchKeyUp: React.KeyboardEventHandler<HTMLInputElement> = (
-    event,
-  ) => {
+  const onSearch = (value: string) => {
     // Cancel previous fetch
     previousAbortController?.current && previousAbortController.current.abort();
 
-    const { value } = event.target as HTMLInputElement;
-
-    if (value?.length < 3) return;
-
-    // New abort controller for new fetch
     const newAbortController = new AbortController();
     previousAbortController.current = newAbortController;
 
-    searchPeople(value, newAbortController.signal);
+    return searchPeople(value, newAbortController.signal);
   };
 
   return (
     <div className="people-search">
       <h1>People Lookup</h1>
-      <div className="search-bar">
-        <input onKeyUp={onSearchKeyUp} />
-        {isLoading && <LoadingSpinner />}
-      </div>
+      <SearchField threshold={3} onSearch={onSearch} />
       <ul>
         {foundPeople.map((person) => (
           <li key={person.url}>{person.name}</li>
