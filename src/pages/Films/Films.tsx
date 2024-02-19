@@ -1,4 +1,4 @@
-import { LoadingSpinner } from "../shared/components/LoadingSpinner/LoadingSpinner";
+import { LoadingSpinner } from "../../components";
 import { useFilms } from "./film-service";
 
 import "./Films.scss";
@@ -10,7 +10,7 @@ export const Films = () => {
     <div className="film-overview">
       <h1>Films</h1>
       {isLoading ? (
-        <LoadingSpinner height="50px" />
+        <LoadingSpinner />
       ) : (
         <ul>
           {films.map((film) => (

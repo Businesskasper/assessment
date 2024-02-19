@@ -1,6 +1,6 @@
 import React from "react";
 import { Film } from "./film-model";
-import { API_BASE_URL, ApiResponse } from "../shared/api";
+import { API_BASE_URL, ApiResponse } from "../../shared/api";
 
 /**
  * React hook to fetch films

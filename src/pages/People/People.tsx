@@ -1,12 +1,13 @@
-import { LoadingSpinner } from "../shared/components/LoadingSpinner/LoadingSpinner";
-import "./People.scss";
+import { LoadingSpinner } from "../../components";
 import { usePeopleSearch } from "./people-service";
+
+import "./People.scss";
 
 export const People = () => {
   const { isLoading, searchPeople, foundPeople } = usePeopleSearch();
 
   const onSearchKeyUp: React.KeyboardEventHandler<HTMLInputElement> = (
-    event,
+    event
   ) => {
     const { value } = event.target as HTMLInputElement;
 
