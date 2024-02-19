@@ -1,28 +1,17 @@
-import { LoadingSpinner } from "../../components";
+import { SearchField } from "../../components";
 import { usePeopleSearch } from "./people-service";
 
 import "./Lookup.scss";
 
 export const PeopleSearch = () => {
-  const { isLoading, searchPeople, foundPeople } = usePeopleSearch();
+  const { searchPeople, foundPeople } = usePeopleSearch();
 
-  const onSearchKeyUp: React.KeyboardEventHandler<HTMLInputElement> = (
-    event
-  ) => {
-    const { value } = event.target as HTMLInputElement;
-
-    if (value?.length < 3) return;
-
-    searchPeople(value);
-  };
+  const onSearch = (value: string) => searchPeople(value);
 
   return (
     <div className="people-search">
       <h1>People Lookup</h1>
-      <div className="search-bar">
-        <input onKeyUp={onSearchKeyUp} />
-        {isLoading && <LoadingSpinner />}
-      </div>
+      <SearchField threshold={3} onSearch={onSearch} />
       <ul>
         {foundPeople.map((person) => (
           <li key={person.url}>{person.name}</li>

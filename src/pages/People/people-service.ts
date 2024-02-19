@@ -14,7 +14,7 @@ export const usePeopleSearch = () => {
 
   const searchPeople = React.useCallback((searchValue: string) => {
     setIsLoading(true);
-    fetch(`${API_BASE_URL}/people/?search=${searchValue}`)
+    return fetch(`${API_BASE_URL}/people/?search=${searchValue}`)
       .then((response) => response.json())
       .then((result: ApiResponse<People>) => {
         setFoundPeople(result.results);
