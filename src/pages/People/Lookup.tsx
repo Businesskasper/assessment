@@ -1,9 +1,9 @@
 import { LoadingSpinner } from "../../components";
 import { usePeopleSearch } from "./people-service";
 
-import "./People.scss";
+import "./Lookup.scss";
 
-export const People = () => {
+export const PeopleSearch = () => {
   const { isLoading, searchPeople, foundPeople } = usePeopleSearch();
 
   const onSearchKeyUp: React.KeyboardEventHandler<HTMLInputElement> = (
@@ -17,8 +17,8 @@ export const People = () => {
   };
 
   return (
-    <div className="people-overview">
-      <h1>People</h1>
+    <div className="people-search">
+      <h1>People Lookup</h1>
       <div className="search-bar">
         <input onKeyUp={onSearchKeyUp} />
         {isLoading && <LoadingSpinner />}
