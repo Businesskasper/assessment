@@ -14,7 +14,7 @@ export const Navbar = ({ links }: Props) => {
   return (
     <div className="navbar">
       {links
-        .filter((link) => !!link.path)
+        .filter((link) => !!link.title)
         .map((link, index) => (
           <NavbarLink key={index} {...link} />
         ))}
