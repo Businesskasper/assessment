@@ -1,5 +1,5 @@
 import React from "react";
-import { LoadingSpinner } from "../shared/components/LoadingSpinner/LoadingSpinner";
+import { LoadingSpinner } from "../../components";
 import { usePeopleSearch } from "./people-service";
 
 import "./People.scss";

@@ -1,29 +1,33 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import "./App.scss";
-import { Films } from "./Films/Films";
-import { People } from "./People/People";
-import { Link, Navbar } from "./Navbar/Navbar";
+import { Films, People } from "./pages";
+import { Link, Navbar } from "./components";
 
 function App() {
   const links: Array<Link> = [
     {
-      target: "/films",
+      path: "/films",
       title: "Films",
+      element: <Films />,
     },
     {
-      target: "/people",
+      path: "/people",
       title: "People",
+      element: <People />,
+    },
+    {
+      path: "/",
+      element: <Navigate to="/films" />,
     },
   ];
-
   return (
     <>
       <BrowserRouter>
         <Navbar links={links} />
         <Routes>
-          <Route path="/films" element={<Films />} />
-          <Route path="/people" element={<People />} />
-          <Route path="/" element={<Navigate to="/films" />} />
+          {links.map(({ path, element }) => (
+            <Route key={path} path={path} element={element} />
+          ))}
         </Routes>
       </BrowserRouter>
     </>
