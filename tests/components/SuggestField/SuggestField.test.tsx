@@ -1,16 +1,16 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import React from "react";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { SearchField } from "../../../src/components";
+import { SuggestField } from "../../../src/components";
 
 const onSearch = vi.fn(() => Promise.resolve());
 
-describe("SearchField component", () => {
+describe("SuggestField component", () => {
   afterEach(() => {
     onSearch.mockClear();
   });
   it("Component renders", () => {
-    render(<SearchField onSearch={onSearch} threshold={3} />);
+    render(<SuggestField onSearch={onSearch} threshold={3} />);
 
     const input = screen.getByRole("textbox");
 
@@ -18,7 +18,7 @@ describe("SearchField component", () => {
   });
 
   it("Search handler is triggered after threshold", () => {
-    render(<SearchField onSearch={onSearch} threshold={3} />);
+    render(<SuggestField onSearch={onSearch} threshold={3} />);
 
     const input = screen.getByRole<HTMLInputElement>("textbox");
 

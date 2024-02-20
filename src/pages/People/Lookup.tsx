@@ -1,4 +1,4 @@
-import { SearchField } from "../../components";
+import { SuggestField } from "../../components";
 import { usePeopleSearch } from "./people-service";
 
 import "./Lookup.scss";
@@ -11,7 +11,7 @@ export const PeopleSearch = () => {
   return (
     <div className="people-search">
       <h1>People Lookup</h1>
-      <SearchField threshold={3} onSearch={onSearch} />
+      <SuggestField threshold={3} onSearch={onSearch} />
       <ul>
         {foundPeople.map((person) => (
           <li key={person.url}>{person.name}</li>

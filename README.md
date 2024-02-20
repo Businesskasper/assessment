@@ -1,3 +1,10 @@
+# Assessment
+
+Demo application for assessment purposes.
+
+Data is fetched from [SWAPI (Star Wars API)](https://swapi.dev/).
+
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
