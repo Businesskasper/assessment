@@ -1,14 +1,14 @@
 import React from "react";
-
-import "./SearchField.scss";
 import { LoadingSpinner } from "..";
+
+import "./SuggestField.scss";
 
 type Props<T> = {
   threshold: number;
   onSearch: (searchValue: string) => Promise<T>;
 };
 
-export const SearchField = <T,>({ threshold, onSearch }: Props<T>) => {
+export const SuggestField = <T,>({ threshold, onSearch }: Props<T>) => {
   const [isLoading, setIsLoading] = React.useState(false);
 
   // Change handler for search input
