@@ -26,4 +26,3 @@ export const useFilms = () => {
 
   return { films, isLoading };
 };
-

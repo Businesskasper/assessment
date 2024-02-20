@@ -17,7 +17,7 @@ export const Films = () => {
       ) : (
         <div className="film-list">
           {films.map((film) => (
-            <FilmDetails key={film.url} film={film}/>
+            <FilmDetails key={film.url} film={film} />
           ))}
         </div>
       )}
@@ -37,15 +37,20 @@ const FilmDetails = ({ film }: FilmDetailsProps) => {
 
   return (
     <div className="film-details">
-      <div>{film.title}</div>
-      <div onClick={toggleCharactersExpanded}>
-        {charactersExpanded ? "-" : "+"}
+      <div className="toggle-container">
+        <div className="toggle" onClick={toggleCharactersExpanded}>
+          {charactersExpanded ? "-" : "+"}
+        </div>
+        <div>{film.title}</div>
       </div>
       {charactersExpanded && (
-        <div className="character-list">
-          {film.characters.map((characterUrl) => (
-            <CharacterDetails key={characterUrl} url={characterUrl} />
-          ))}
+        <div className="characters">
+          <h4>Characters</h4>
+          <div className="character-list">
+            {film.characters.map((characterUrl) => (
+              <CharacterDetails key={characterUrl} url={characterUrl} />
+            ))}
+          </div>
         </div>
       )}
     </div>
@@ -60,10 +65,7 @@ const CharacterDetails = ({ url }: CharacterDetailsProps) => {
 
   return (
     <div className={`character-details ${isLoading ? "loading" : ""}`}>
-      <div className="key-value-pair">
-        <div className="label">Name</div>
-        <div className="value">{character?.name || "..."}</div>
-      </div>
+      <h5>{character?.name || "..."}</h5>
       <div className="key-value-pair">
         <div className="label">Height</div>
         <div className="value">{character?.height || "..."}</div>
@@ -95,7 +97,7 @@ const useSingleResource = <T,>(url: string) => {
     setIsLoading(true);
     return fetch(url, {
       signal: abortController.current.signal,
-      cache: 'force-cache'
+      cache: "force-cache",
     })
       .then((response) => response.json())
       .then((result: T) => {
