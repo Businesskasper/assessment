@@ -7,7 +7,31 @@
     height: 50px;
   }
 
-  ul {
+  .film-list {
     line-height: 300%;
+
+    .character-list {
+
+      .character-details {
+        margin: 0 0 2rem 1rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 3rem;
+
+        &.loading {
+          opacity: .6;
+        }
+
+        .key-value-pair {
+          width: 200px;
+          line-height: 200%;
+          margin-bottom: 1rem;
+          font-size: .8rem;
+          .value {
+            	font-weight: 300;
+          }
+        }
+      }
+    }
   }
 }

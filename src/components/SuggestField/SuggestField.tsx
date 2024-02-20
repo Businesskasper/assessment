@@ -11,18 +11,27 @@ type Props<T> = {
 export const SuggestField = <T,>({ threshold, onSearch }: Props<T>) => {
   const [isLoading, setIsLoading] = React.useState(false);
 
-  // Change handler for search input
+  const [value, setValue] = React.useState("");
+  const debouncedValue = useDebounce(value, 200);
+
+  // Trigger provided onSearch event when debounced value changes
   // Exits if entered value has not required length
-  // Otherwise triggers async handler and manages loading indicator
+  React.useEffect(() => {
+    if (debouncedValue?.length < threshold) return;
+
+    setIsLoading(true);
+    onSearch(debouncedValue).finally(() => {
+      setIsLoading(false);
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [debouncedValue, threshold]);
+
+  // Change handler for search input
+  // Updates debounced value
   const onChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
     const { value } = event.target as HTMLInputElement;
 
-    if (value?.length < threshold) return;
-
-    setIsLoading(true);
-    onSearch(value).finally(() => {
-      setIsLoading(false);
-    });
+    setValue(value);
   };
 
   return (
@@ -32,3 +41,20 @@ export const SuggestField = <T,>({ threshold, onSearch }: Props<T>) => {
     </div>
   );
 };
+
+
+function useDebounce<T>(value: T, delay?: number): T {
+  const [debouncedValue, setDebouncedValue] = React.useState<T>(value)
+
+  React.useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedValue(value)
+    }, delay ?? 500)
+
+    return () => {
+      clearTimeout(timer)
+    }
+  }, [value, delay])
+
+  return debouncedValue
+}
