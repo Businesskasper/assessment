@@ -1,23 +1,23 @@
 import React from "react";
-import { People } from "./people-model";
+import { Character } from "./character-model";
 import { API_BASE_URL, ApiResponse } from "../../shared/api";
 
 /**
- * React hook to fetch films
+ * React hook to query characters
  *
  * @returns an object containing the loading state and fetched films
  */
-export const usePeopleSearch = () => {
-  const [foundPeople, setFoundPeople] = React.useState<Array<People>>([]);
+export const useCharacterLookup = () => {
+  const [foundCharacters, setFoundCharacters] = React.useState<Array<Character>>([]);
 
   const [isLoading, setIsLoading] = React.useState(false);
 
-  const searchPeople = React.useCallback((searchValue: string) => {
+  const lookupCharacters = React.useCallback((searchValue: string) => {
     setIsLoading(true);
     return fetch(`${API_BASE_URL}/people/?search=${searchValue}`)
       .then((response) => response.json())
-      .then((result: ApiResponse<People>) => {
-        setFoundPeople(result.results);
+      .then((result: ApiResponse<Character>) => {
+        setFoundCharacters(result.results);
         return result.results;
       })
       .finally(() => {
@@ -25,22 +25,26 @@ export const usePeopleSearch = () => {
       });
   }, []);
 
-  return { foundPeople, isLoading, searchPeople };
+  return { foundCharacters, isLoading, lookupCharacters };
 };
 
-export const usePeoplePaginated = () => {
-  const [people, setPeople] = React.useState<Array<People>>();
+
+/**
+ * React hook to fetch characters paginated
+ */
+export const useCharactersPaginated = () => {
+  const [characters, setCharacters] = React.useState<Array<Character>>();
 
   const [count, setCount] = React.useState(0);
 
   const [isLoading, setIsLoading] = React.useState(false);
 
-  const getPeople = React.useCallback((page: number): Promise<People[]> => {
+  const getCharacters = React.useCallback((page: number): Promise<Character[]> => {
     setIsLoading(true);
     return fetch(`${API_BASE_URL}/people/?page=${page.toString()}`)
       .then((response) => response.json())
-      .then((result: ApiResponse<People>) => {
-        setPeople(result.results);
+      .then((result: ApiResponse<Character>) => {
+        setCharacters(result.results);
         setCount(result.count);
         return result.results;
       })
@@ -49,5 +53,5 @@ export const usePeoplePaginated = () => {
       });
   }, []);
 
-  return { people, isLoading, count, getPeople };
+  return { characters, isLoading, count, getCharacters };
 };

@@ -1,2 +1,2 @@
-export * from "./People/Lookup";
+export * from "./Characters/Lookup";
 export * from "./Films/Films";
