@@ -10,7 +10,14 @@
     &:hover,
     &:active {
       outline: 1px solid darkgray;
-      // color: white;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+
+      &:hover {
+        outline: none;
+      }
     }
   }
 }
