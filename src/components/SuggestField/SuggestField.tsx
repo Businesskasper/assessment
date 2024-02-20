@@ -26,7 +26,7 @@ export const SuggestField = <T,>({ threshold, onSearch }: Props<T>) => {
   };
 
   return (
-    <div className="search-field">
+    <div className="suggest-field">
       <input maxLength={32} onChange={onChange} />
       {isLoading && <LoadingSpinner />}
     </div>

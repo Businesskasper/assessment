@@ -1,7 +1,7 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { Link, Navbar } from "./components";
-import { Films, PeopleSearch } from "./pages";
-import { Overview } from "./pages/People/Overview";
+import { Films, CharacterLookup } from "./pages";
+import { Overview } from "./pages/Characters/Overview";
 
 import "./App.scss";
 
@@ -13,13 +13,13 @@ function App() {
       element: <Films />,
     },
     {
-      path: "/people-search",
-      title: "People Search",
-      element: <PeopleSearch />,
+      path: "/character-search",
+      title: "Character Search",
+      element: <CharacterLookup />,
     },
     {
-      path: "/people-overview",
-      title: "People Overview",
+      path: "/character-overview",
+      title: "Character Overview",
       element: <Overview />,
     },
     {

@@ -1,24 +1,24 @@
 import { LoadingSpinner, Paginator } from "../../components";
-import { usePeoplePaginated } from "./people-service";
+import { useCharactersPaginated } from "./character-service";
 
 import "./Overview.scss";
 
 export const Overview = () => {
-  const { isLoading, getPeople, count, people } = usePeoplePaginated();
+  const { isLoading, getCharacters, count, characters } = useCharactersPaginated();
   const totalPages = Math.ceil((count || 0) / 10);
 
   const onPageChange = (page: number) => {
-    getPeople(page);
+    getCharacters(page);
   };
 
   return (
-    <div className="people-overview">
-      <h1>People Overview</h1>
+    <div className="character-overview">
+      <h1>Character Overview</h1>
       <Paginator onPageChange={onPageChange} totalPages={totalPages} />
       {isLoading ? (
         <LoadingSpinner />
       ) : (
-        <ul>{people?.map((p) => <li key={p.url}>{p.name}</li>)}</ul>
+        <ul>{characters?.map((character) => <li key={character.url}>{character.name}</li>)}</ul>
       )}
     </div>
   );

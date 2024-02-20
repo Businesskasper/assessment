@@ -5,7 +5,7 @@ import { SuggestField } from "../../../src/components";
 
 const onSearch = vi.fn(() => Promise.resolve());
 
-describe("SearchField component", () => {
+describe("SuggestField component", () => {
   afterEach(() => {
     onSearch.mockClear();
   });

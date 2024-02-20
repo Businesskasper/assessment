@@ -1,11 +1,11 @@
+import React from "react";
 import { SuggestField } from "../../components";
-import { usePeopleSearch } from "./people-service";
+import { useCharacterLookup } from "./character-service";
 
 import "./Lookup.scss";
-import React from "react";
 
-export const PeopleSearch = () => {
-  const { searchPeople, foundPeople } = usePeopleSearch();
+export const CharacterLookup = () => {
+  const { lookupCharacters, foundCharacters } = useCharacterLookup();
 
   // Contains the last AbortController in order to cancel the previous fetch for suggestions
   const previousAbortController = React.useRef<AbortController>();
@@ -17,16 +17,16 @@ export const PeopleSearch = () => {
     const newAbortController = new AbortController();
     previousAbortController.current = newAbortController;
 
-    return searchPeople(value, newAbortController.signal);
+    return lookupCharacters(value, newAbortController.signal);
   };
 
   return (
-    <div className="people-search">
-      <h1>People Lookup</h1>
+    <div className="character-search">
+      <h1>Character Lookup</h1>
       <SuggestField threshold={3} onSearch={onSearch} />
       <ul>
-        {foundPeople.map((person) => (
-          <li key={person.url}>{person.name}</li>
+        {foundCharacters.map((character) => (
+          <li key={character.url}>{character.name}</li>
         ))}
       </ul>
     </div>
