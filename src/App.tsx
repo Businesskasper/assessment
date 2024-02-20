@@ -1,6 +1,6 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import { Films, PeopleSearch } from "./pages";
 import { Link, Navbar } from "./components";
+import { Films, PeopleSearch } from "./pages";
 import { Overview } from "./pages/People/Overview";
 
 import "./App.scss";

@@ -1,11 +1,11 @@
-import { usePeoplePaginated } from "./people-service";
 import { LoadingSpinner, Paginator } from "../../components";
+import { usePeoplePaginated } from "./people-service";
 
 import "./Overview.scss";
 
 export const Overview = () => {
   const { isLoading, getPeople, count, people } = usePeoplePaginated();
-  const totalPages = Math.ceil(count || 0 / 10);
+  const totalPages = Math.ceil((count || 0) / 10);
 
   const onPageChange = (page: number) => {
     getPeople(page);
