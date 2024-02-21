@@ -1,5 +1,4 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import React from "react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { Paginator } from "../../../src/components";
 
@@ -14,7 +13,7 @@ describe("Paginator component", () => {
 
     const indicator = screen.getByText(/\//).textContent;
 
-    expect(indicator).toBeDefined();
+    expect(indicator).toBeInTheDocument();
     expect(indicator).toEqual("1/5");
   });
 
@@ -24,13 +23,13 @@ describe("Paginator component", () => {
     const nextButton = screen.getByRole<HTMLButtonElement>("button", {
       name: "+",
     });
-    expect(nextButton).toBeDefined();
+    expect(nextButton).toBeInTheDocument();
     expect(nextButton.disabled).toBe(false);
 
     const previousButton = screen.getByRole<HTMLButtonElement>("button", {
       name: "-",
     });
-    expect(previousButton).toBeDefined();
+    expect(previousButton).toBeInTheDocument();
     expect(previousButton.disabled).toBe(true);
   });
 

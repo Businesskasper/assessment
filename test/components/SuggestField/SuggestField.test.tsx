@@ -1,5 +1,4 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import React from "react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { SuggestField } from "../../../src/components";
 
@@ -14,7 +13,7 @@ describe("SuggestField component", () => {
 
     const input = screen.getByRole("textbox");
 
-    expect(input).toBeDefined();
+    expect(input).toBeInTheDocument();
   });
 
   it("Search handler is triggered after threshold", () => {
@@ -22,7 +21,7 @@ describe("SuggestField component", () => {
 
     const input = screen.getByRole<HTMLInputElement>("textbox");
 
-    expect(input).toBeDefined();
+    expect(input).toBeInTheDocument();
 
     fireEvent.change(input, { target: { value: "ab" } });
     expect(onSearch).not.toHaveBeenCalled();

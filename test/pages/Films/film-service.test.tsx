@@ -15,9 +15,9 @@ describe("Test useFilms", () => {
           });
         });
       },
-    };
+    } as Response;
 
-    fetchSpy.mockResolvedValue(mockedFetchResult as any);
+    fetchSpy.mockResolvedValue(mockedFetchResult);
 
     const { result } = renderHook(() => useFilms());
 
