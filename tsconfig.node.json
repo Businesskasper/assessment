@@ -6,8 +6,6 @@
 		"moduleResolution": "node",
 		"allowSyntheticDefaultImports": true,
 		"strict": true
-		// "types": ["node", "@testing-library/jest-dom"]
 	},
-	// "include": ["src", "test", "vite.config.ts"]
 	"include": ["vite.config.ts"]
 }

@@ -4,7 +4,8 @@ import { useCharactersPaginated } from "./character-service";
 import "./Overview.scss";
 
 export const Overview = () => {
-  const { isLoading, getCharacters, count, characters } = useCharactersPaginated();
+  const { isLoading, getCharacters, count, characters } =
+    useCharactersPaginated();
   const totalPages = Math.ceil((count || 0) / 10);
 
   const onPageChange = (page: number) => {
@@ -18,7 +19,11 @@ export const Overview = () => {
       {isLoading ? (
         <LoadingSpinner />
       ) : (
-        <ul>{characters?.map((character) => <li key={character.url}>{character.name}</li>)}</ul>
+        <ul>
+          {characters?.map((character) => (
+            <li key={character.url}>{character.name}</li>
+          ))}
+        </ul>
       )}
     </div>
   );

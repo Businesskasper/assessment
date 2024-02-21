@@ -1,7 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import React from "react";
 import { afterEach, describe, expect, it, vi } from "vitest";
-
 import { Films } from "../../../src/pages/Films/Films";
 
 // mock films hook
@@ -24,13 +22,12 @@ describe("Films component", () => {
       isLoading: true,
       films: [],
     });
-
     render(<Films />);
 
     const heading = screen.getByRole("heading", {
       name: /Films/,
     });
-    expect(heading).toBeDefined();
+    expect(heading).toBeInTheDocument();
   });
 
   it("Component shows loading indicator", () => {
@@ -43,7 +40,7 @@ describe("Films component", () => {
 
     const loadingIndicator = container.querySelector(".loader");
 
-    expect(loadingIndicator).toBeDefined();
+    expect(loadingIndicator).toBeInTheDocument();
   });
 
   it("Component should render results", () => {
