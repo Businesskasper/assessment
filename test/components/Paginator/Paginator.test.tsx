@@ -11,10 +11,10 @@ describe("Paginator component", () => {
   it("Component renders current page", () => {
     render(<Paginator onPageChange={onChange} totalPages={5} />);
 
-    const indicator = screen.getByText(/\//).textContent;
+    const indicator = screen.getByText(/\//);
 
     expect(indicator).toBeInTheDocument();
-    expect(indicator).toEqual("1/5");
+    expect(indicator.textContent).toEqual("1/5");
   });
 
   it("Buttons have correct state", () => {
