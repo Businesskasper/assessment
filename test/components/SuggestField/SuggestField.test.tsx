@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { SuggestField } from "../../../src/components";
 
@@ -16,7 +16,7 @@ describe("SuggestField component", () => {
     expect(input).toBeInTheDocument();
   });
 
-  it("Search handler is triggered after threshold", () => {
+  it("Search handler is triggered after threshold", async () => {
     render(<SuggestField onSearch={onSearch} threshold={3} />);
 
     const input = screen.getByRole<HTMLInputElement>("textbox");
@@ -26,6 +26,8 @@ describe("SuggestField component", () => {
     fireEvent.change(input, { target: { value: "ab" } });
     expect(onSearch).not.toHaveBeenCalled();
     fireEvent.change(input, { target: { value: "abcd" } });
-    expect(onSearch).toHaveBeenCalledTimes(1);
+    await waitFor(() => {
+      expect(onSearch).toHaveBeenCalledTimes(1);
+    })
   });
 });
