@@ -1,5 +1,5 @@
 import React from "react";
-import { ApiResponse, API_BASE_URL } from "../../shared/api";
+import { ApiListResponse, API_BASE_URL } from "../../shared/api";
 import { Film } from "./film-model";
 
 /**
@@ -16,7 +16,7 @@ export const useFilms = () => {
     setIsLoading(true);
     fetch(`${API_BASE_URL}/films`)
       .then((response) => response.json())
-      .then((result: ApiResponse<Film>) => {
+      .then((result: ApiListResponse<Film>) => {
         setFilms(result.results);
       })
       .finally(() => {

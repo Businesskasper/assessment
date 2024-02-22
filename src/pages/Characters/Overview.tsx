@@ -6,16 +6,13 @@ import "./Overview.scss";
 export const Overview = () => {
   const { isLoading, getCharacters, count, characters } =
     useCharactersPaginated();
-  const totalPages = Math.ceil((count || 0) / 10);
 
-  const onPageChange = (page: number) => {
-    getCharacters(page);
-  };
+  const totalPages = Math.ceil((count || 0) / 10);
 
   return (
     <div className="character-overview">
       <h1>Character Overview</h1>
-      <Paginator onPageChange={onPageChange} totalPages={totalPages} />
+      <Paginator onPageChange={getCharacters} totalPages={totalPages} />
       {isLoading ? (
         <LoadingSpinner />
       ) : (

@@ -1,4 +1,4 @@
-export type ApiResponse<T> = {
+export type ApiListResponse<T> = {
   count: number;
   next?: string;
   previous?: string;
