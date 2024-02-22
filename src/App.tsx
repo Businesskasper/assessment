@@ -1,6 +1,6 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { Link, Navbar } from "./components";
-import { Films, CharacterLookup } from "./pages";
+import { CharacterLookup, Films } from "./pages";
 import { Overview } from "./pages/Characters/Overview";
 
 import "./App.scss";
