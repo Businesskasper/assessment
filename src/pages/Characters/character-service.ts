@@ -1,6 +1,6 @@
 import React from "react";
 import { Character } from "./character-model";
-import { API_BASE_URL, ApiResponse } from "../../shared/api";
+import { API_BASE_URL, ApiListResponse } from "../../shared/api";
 
 /**
  * React hook to query characters
@@ -18,9 +18,9 @@ export const useCharacterLookup = () => {
     setIsLoading(true);
     return fetch(`${API_BASE_URL}/people/?search=${searchValue}`)
       .then((response) => response.json())
-      .then((result: ApiResponse<Character>) => {
-        setFoundCharacters(result.results);
-        return result.results;
+      .then(({ results }: ApiListResponse<Character>) => {
+        setFoundCharacters(results);
+        return results;
       })
       .finally(() => {
         setIsLoading(false);
@@ -45,16 +45,16 @@ export const useCharactersPaginated = () => {
       setIsLoading(true);
       return fetch(`${API_BASE_URL}/people/?page=${page.toString()}`)
         .then((response) => response.json())
-        .then((result: ApiResponse<Character>) => {
-          setCharacters(result.results);
-          setCount(result.count);
-          return result.results;
+        .then(({ results, count }: ApiListResponse<Character>) => {
+          setCharacters(results);
+          setCount(count);
+          return results;
         })
         .finally(() => {
           setIsLoading(false);
         });
     },
-    [],
+    []
   );
 
   return { characters, isLoading, count, getCharacters };
